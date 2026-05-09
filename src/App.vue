@@ -39,10 +39,9 @@ function removeToast(id: number): void {
           <span class="font-bold text-gray-900 dark:text-white">ShopVue</span>
         </div>
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          Built with Vue 3 · TypeScript · Tailwind CSS · Powered by
-          <a href="https://dummyjson.com" target="_blank" class="text-primary-600 hover:underline">DummyJSON</a>
+          Built by IFS · 
         </p>
-        <p class="text-xs text-gray-400">© 2025 ShopVue — Mini Project Submission</p>
+        <p class="text-xs text-gray-400">© 2026 ShopVue — Mini Project Submission</p>
       </div>
     </footer>
 

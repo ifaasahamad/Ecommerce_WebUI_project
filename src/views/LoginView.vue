@@ -11,12 +11,12 @@ const password = ref('')
 const showPassword = ref(false)
 
 // Demo credentials hint
-const demoUser = { username: 'emilys', password: 'emilysspass' }
+const demoUser = { username: '', password: '' }
 
 async function handleLogin(): Promise<void> {
   const ok = await auth.login(username.value, password.value)
   if (ok) {
-    router.push('/')
+    router.push('')
   }
 }
 
@@ -56,18 +56,12 @@ watch([username, password], () => auth.clearError())
           class="mb-6 flex items-center justify-between rounded-xl bg-primary-50 px-4 py-3 dark:bg-primary-950"
         >
           <div>
-            <p class="text-xs font-semibold text-primary-700 dark:text-primary-300">🎯 Demo Credentials</p>
+            
             <p class="text-xs text-primary-600 dark:text-primary-400">
               {{ demoUser.username }} / {{ demoUser.password }}
             </p>
           </div>
-          <button
-            id="btn-fill-demo"
-            @click="fillDemo"
-            class="rounded-lg bg-primary-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-primary-700"
-          >
-            Use Demo
-          </button>
+          
         </div>
 
         <!-- Form -->
@@ -151,12 +145,7 @@ watch([username, password], () => auth.clearError())
         </form>
 
         <!-- Footer -->
-        <p class="mt-6 text-center text-xs text-gray-500 dark:text-gray-400">
-          Authentication powered by
-          <a href="https://dummyjson.com/docs/auth" target="_blank" class="text-primary-600 hover:underline">
-            DummyJSON API
-          </a>
-        </p>
+        
       </div>
     </div>
   </main>

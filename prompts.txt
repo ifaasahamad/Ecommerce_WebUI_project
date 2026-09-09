@@ -1,0 +1,35 @@
+The aim 01: Set up the Vue 3 + TypeScript + Vite + Tailwind project with all bonus features
+Actual prompt: Scaffold a Vue 3 project using Vite with TypeScript template. Install vue-router@4, pinia, pinia-plugin-persistedstate, axios, and tailwindcss @tailwindcss/vite. Configure vite.config.ts to use the Tailwind Vite plugin.
+
+The aim 02: Define strict TypeScript interfaces for all DummyJSON API responses
+Actual prompt: Write TypeScript interfaces for the DummyJSON /products API response. The Product interface must include: id, title, description, category, price, discountPercentage, rating, stock, tags, brand, sku, weight, dimensions (width/height/depth), warrantyInformation, shippingInformation, availabilityStatus, reviews (rating/comment/date/reviewerName/reviewerEmail), returnPolicy, minimumOrderQuantity, meta (createdAt/updatedAt/barcode/qrCode), images[], thumbnail. No any types allowed. Also define ProductsResponse, LoginRequest, LoginResponse, CartItem, ProductFilters, and AsyncState<T>.
+
+The aim 03: Create a Pinia auth store with DummyJSON /auth/login simulation
+Actual prompt: Write a Pinia store using the Composition API setup syntax (defineStore with setup function) for authentication. It must: call POST https://dummyjson.com/auth/login with {username, password, expiresInMins: 60}, store the returned JWT token in localStorage, expose isAuthenticated and fullName computed properties, handle loading/error states with typed refs, and use pinia-plugin-persistedstate to persist user and token.
+
+The aim 04: Create a Pinia cart store with full CRUD and localStorage persistence
+Actual prompt: Write a Pinia store using setup syntax for a shopping cart. CartItem is {product: Product, quantity: number}. Implement: addToCart (respects stock limit), removeFromCart, updateQuantity (removes if qty<=0), clearCart, isInCart(id), getQuantity(id). Computed: totalItems, totalPrice (with discount applied), originalPrice, savings. Use pinia-plugin-persistedstate to persist items array to localStorage.
+
+The aim 05: Build a singleton composable for product fetching, filtering, and sorting
+Actual prompt: Write a Vue 3 composable called useProducts() that manages module-level singleton state (so all components share one cache). It must: fetch all products from https://dummyjson.com/products using axios with pagination (limit=100 per page), fetch categories from /products/categories, fetch single product from /products/:id, and expose a computed filteredProducts that applies: category filter, keyword search (title+brand+description), price range filter, and sort (price-asc/price-desc/rating/default). All state and the filters object must be strictly typed using the ProductFilters interface.
+
+The aim 06: Build a dark mode composable with OS preference detection and localStorage
+Actual prompt: Write a useDarkMode() composable using Vue 3. Use a module-level singleton ref for isDark. On initialization, read localStorage key 'shopvue-dark-mode', falling back to window.matchMedia('prefers-color-scheme: dark'). Use a watch to add/remove the 'dark' class on document.documentElement and save to localStorage whenever isDark changes. Export toggle() and setDark(value) functions.
+
+The aim 07: Create the Vue Router configuration with lazy-loaded routes and scroll restore
+Actual prompt: Configure Vue Router 4 using createWebHashHistory (for static hosting compatibility). Define routes: / (HomeView, eager), /products (ProductsView, lazy), /products/:id (ProductDetail, lazy, props mapped to Number), /cart (CartView, lazy), /login (LoginView, lazy). Add scrollBehavior to restore position or scroll to top. Add a catch-all redirect to /.
+
+The aim 08: Build the NavBar component with all interactive features
+Actual prompt: Create NavBar.vue using Vue 3 Composition API and Tailwind CSS. It must include: a logo with gradient icon, desktop nav links with active-class styling, a search form that updates the useProducts filter and navigates to /products, a dark mode toggle button with sun/moon SVG icons, a cart icon with an animated badge showing totalItems from the cart Pinia store, authenticated user avatar + logout button (or Login link if not authenticated), and a mobile hamburger menu that reveals a slide-down panel with search and nav links. Use sticky positioning with backdrop blur.
+
+The aim 09: Build the ProductCard component with discount, rating stars, and cart integration
+Actual prompt: Create ProductCard.vue that accepts a Product prop. Display: thumbnail image with hover zoom, discount badge (if discountPercentage > 5), out-of-stock overlay, category badge, title (line-clamp-2), brand, star rating array (full/half/empty SVG stars), discounted price and original price strikethrough, and an Add to Cart button. The button should show a green checkmark for 1.5s after clicking, and be disabled if stock === 0. Use the useCartStore to call addToCart.
+
+The aim 10: Build the FilterBar with category pills, sort dropdown, and price range
+Actual prompt: Create FilterBar.vue using useProducts composable. Show: a result count line, a sort <select> with options (default/price-asc/price-desc/rating), min/max price inputs with $ prefix, and a horizontal scrollable list of category pill buttons. The active category should be highlighted with primary-600 background. Include a 'Clear filters' button that appears only when hasActiveFilters is true. All filter changes call setFilter() from the composable.
+
+The aim 11: Build the product detail page with image gallery and reviews
+Actual prompt: Create ProductDetail.vue that accepts an id: number prop via Vue Router. On mount, fetch the product using useProducts().fetchProduct(id). Display: a main image that changes on thumbnail click (image gallery), breadcrumb back button, category + brand badges, full title as <h1>, star rating row, discounted price block with savings amount, description, stock status indicator (green/amber/red dot), tags, quantity stepper (increment/decrement bounded by stock), Add to Cart button with success state, shipping/return/warranty info cards, and a customer reviews grid.
+
+The aim 12: Generate Tailwind CSS custom design system with component classes
+Actual prompt: Write a Tailwind CSS v4 style.css file using the new @import "tailwindcss" and @theme block syntax. Define custom colors for primary (50-900 shades of blue) and accent (pink 400-600). In @layer components, define: .btn-primary (gradient-free, primary-600 bg, shadow, hover state, active:scale-95, disabled styles), .btn-secondary (white bg, border, dark mode variants), .btn-ghost (transparent, hover bg), .card (white/dark bg, ring, hover shadow + translateY), .input (full width, border, focus ring, dark mode), .badge (rounded-full, inline-flex), .section-title (responsive text size, bold). Import Inter from Google Fonts in App.vue global style.

@@ -33,3 +33,6 @@ Actual prompt: Create ProductDetail.vue that accepts an id: number prop via Vue 
 
 The aim 12: Generate Tailwind CSS custom design system with component classes
 Actual prompt: Write a Tailwind CSS v4 style.css file using the new @import "tailwindcss" and @theme block syntax. Define custom colors for primary (50-900 shades of blue) and accent (pink 400-600). In @layer components, define: .btn-primary (gradient-free, primary-600 bg, shadow, hover state, active:scale-95, disabled styles), .btn-secondary (white bg, border, dark mode variants), .btn-ghost (transparent, hover bg), .card (white/dark bg, ring, hover shadow + translateY), .input (full width, border, focus ring, dark mode), .badge (rounded-full, inline-flex), .section-title (responsive text size, bold). Import Inter from Google Fonts in App.vue global style.
+
+The aim 13: Fix the dark mode functionality so that the theme changes correctly when the user clicks the dark/light mode button.
+Actual prompt: my dark mode is not working fix it
